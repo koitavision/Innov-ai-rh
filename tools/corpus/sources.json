@@ -1,0 +1,57 @@
+{
+  "sources": [
+    {
+      "slug": "code-du-travail-consolide",
+      "title": "Code du travail du Mali (Loi n° 92-020 du 23 septembre 1992), version consolidée (modifiée par lois 2003-37, 2011-79, 2017-021, 2019-025)",
+      "url": "https://sgg-mali.ml/codes/mali-code-du-itravail-1992.pdf",
+      "publisher": "Secrétariat général du Gouvernement du Mali (sgg-mali.ml), texte droit-afrique.com",
+      "kind": "loi"
+    },
+    {
+      "slug": "code-de-prevoyance-sociale-1999",
+      "title": "Code de prévoyance sociale (Loi n° 99-041 du 12 août 1999), version consolidée 2006",
+      "url": "https://sgg-mali.ml/codes/mali-code-prevoyance-sociale-1999-maj-2006.pdf",
+      "publisher": "Secrétariat général du Gouvernement du Mali (sgg-mali.ml)",
+      "kind": "loi"
+    },
+    {
+      "slug": "decret-96-178-application-code-travail",
+      "title": "Décret n° 96-178/P-RM du 13 juin 1996 portant application de diverses dispositions du Code du travail (texte intégral)",
+      "url": "https://sgbv-ihrda.uwazi.io/api/files/1564696030153pv6xqeufbqh.pdf",
+      "publisher": "IHRDA/SGBV database (miroir droit-afrique.com)",
+      "kind": "decret"
+    },
+    {
+      "slug": "jo-2015-25-decret-smig",
+      "title": "Décret n° 2015-0363/P-RM du 19 mai 2015 fixant le salaire minimum interprofessionnel garanti (SMIG), extrait du JO n° 25 du 29 mai 2015",
+      "url": "https://sgg-mali.ml/JO/2015/mali-jo-2015-25.pdf",
+      "publisher": "Secrétariat général du Gouvernement du Mali (sgg-mali.ml)",
+      "kind": "decret",
+      "contains": "2015-0363"
+    },
+    {
+      "slug": "loi-2017-021-modification-code-travail",
+      "title": "Loi n° 2017-021 du 12 juin 2017 portant modification de la Loi n° 92-020 portant Code du travail (texte intégral, extrait du JO 2017-27)",
+      "url": "https://sgg-mali.ml/JO/2017/mali-jo-2017-27.pdf",
+      "publisher": "Secrétariat général du Gouvernement du Mali (sgg-mali.ml)",
+      "kind": "loi",
+      "contains": "2017-021"
+    },
+    {
+      "slug": "loi-2019-025-modification-code-travail",
+      "title": "Loi n° 2019-025 du 5 juillet 2019 portant modification de la Loi n° 92-020 portant Code du travail (texte intégral, extrait du JO 2019-21)",
+      "url": "https://sgg-mali.ml/JO/2019/mali-jo-2019-21.pdf",
+      "publisher": "Secrétariat général du Gouvernement du Mali (sgg-mali.ml)",
+      "kind": "loi",
+      "contains": "2019-025"
+    },
+    {
+      "slug": "jo-2024-30-2-arrete-2024-4363",
+      "title": "Arrêté n° 2024-4363/MTFPDS-SG du 27 décembre 2024 modifiant l'arrêté n° 96-1566/MEFPT-SG du 7 octobre 1996 (modalités d'application du Code du travail : permis de travail des étrangers, licenciement économique, etc.), extrait du JO 2024-30",
+      "url": "https://sgg-mali.ml/JO/2024/mali-jo-2024-30-2.pdf",
+      "publisher": "Secrétariat général du Gouvernement du Mali (sgg-mali.ml)",
+      "kind": "arrete",
+      "contains": "2024-4363"
+    }
+  ]
+}
