@@ -19,7 +19,7 @@ Synthèse des chiffres clés, chacun avec sa référence d'article. Pour le text
 
 ## Durée du travail et heures supplémentaires
 - **Durée légale : 40 heures par semaine** (art. 131 CT), soit **173,33 heures par mois** (décret 96-178, art. D.86-16) ; personnel de maison : 260 h max/mois équivalant 173 h 33 (D.86-16).
-- **Heures supplémentaires** (art. 136 CT ; art. D.86-19 décret 96-178), au-delà de la 60e heure hebdomadaire : de la **61e à la 68e heure : +25 %** ; **au-delà de la 68e : +40 %** ; **+50 % la nuit** (travail de nuit = 21 h–5 h) ; jours non ouvrables : **+50 % le jour** et taux supérieur la nuit/jours fériés. Le taux horaire de base = 1/173,33 du salaire mensuel.
+- **Heures supplémentaires** — taux légaux minimum (art. 137 CT) : jours ouvrables, **+10 % de la 41e à la 48e heure**, **+25 % au-delà de la 48e heure de jour**, **+50 % la nuit** ; jours non ouvrables : **+50 % le jour, +100 % la nuit**. Exploitations agricoles : durée légale **48 h/semaine** (art. 138 CT), +10 % au-delà de jour, +50 % la nuit, +50 %/+100 % les jours de repos/fériés. **Travail de nuit = entre 21 h et 5 h** (art. 141 CT). Le décret 96-178 (art. D.86-16 à D.86-22, principe des équivalences) fixe en outre le décompte au-delà de la 60e heure hebdomadaire (61e-68e : +25 % ; au-delà : +40 % ; +50 % la nuit ; 1/173,33 du salaire mensuel par heure).
 
 ## Congés
 - **Congés payés** : **2,5 jours par mois de service effectif** (art. 151 CT), soit 30 jours pour 12 mois ; droit acquis après 12 mois de service continu chez le même employeur ; l'allocation de congé = 1/12e de la rémunération acquise (art. 114 et suivants).
