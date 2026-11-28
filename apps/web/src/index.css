@@ -1,0 +1,238 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+@layer base {
+  html,
+  body {
+    @apply h-full;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    font-family:
+      "Inter Variable",
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      "Segoe UI",
+      sans-serif;
+  }
+}
+
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #0b1026;
+  --color-brand: #0fd1ff;
+}
+
+/*
+ * Entrance animations for messages, cards and the hero: a small rise with a fade, so
+ * content appears settled rather than popping in.
+ */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes typing-dot {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes shimmer-text {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* The logo ring turning: the cyan dot orbits the ring. */
+@keyframes logo-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.logo-spin {
+  animation: logo-rotate 5s linear infinite;
+}
+
+/* The wordmark revealing itself letter by letter after the ring has spun up. */
+@keyframes letter-in {
+  from {
+    opacity: 0;
+    transform: translateY(7px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.logo-letter {
+  display: inline-block;
+  animation: letter-in 0.45s cubic-bezier(0.21, 1.02, 0.73, 1) both;
+}
+
+/* Hero background blobs drifting slowly. */
+@keyframes blob-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -24px) scale(1.08);
+  }
+  66% {
+    transform: translate(-24px, 18px) scale(0.94);
+  }
+}
+
+.blob-drift {
+  animation: blob-drift 14s ease-in-out infinite;
+}
+
+.blob-drift-slow {
+  animation: blob-drift 20s ease-in-out infinite reverse;
+}
+
+/* Typewriter caret blink. */
+@keyframes caret-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  95% {
+    opacity: 0;
+  }
+}
+
+.caret-blink {
+  animation: caret-blink 1s step-end infinite;
+}
+
+/* Toast popping in from the bottom. */
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.toast-in {
+  animation: toast-in 0.25s cubic-bezier(0.21, 1.02, 0.73, 1) both;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.35s cubic-bezier(0.21, 1.02, 0.73, 1) both;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease both;
+}
+
+.animate-float-soft {
+  animation: float-soft 5s ease-in-out infinite;
+}
+
+.typing-dot {
+  animation: typing-dot 1.2s ease-in-out infinite;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.text-shimmer {
+  background: linear-gradient(100deg, #0b1026 20%, #0fd1ff 40%, #0b1026 60%, #0fd1ff 80%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer-text 6s linear infinite;
+}
+
+/* A quiet scrollbar that only appears over the list it scrolls. */
+.thin-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(212 212 212) transparent;
+}
+
+.thin-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  background-color: rgb(212 212 212);
+}
+
+/*
+ * Spinners and pulsing placeholders already say "loading" by their shape or accessible name, so they
+ * hold still for a reader who asked for reduced motion.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse,
+  .animate-spin,
+  .animate-fade-in-up,
+  .animate-fade-in,
+  .animate-float-soft,
+  .typing-dot,
+  .text-shimmer,
+  .logo-spin,
+  .logo-letter,
+  .blob-drift,
+  .blob-drift-slow,
+  .caret-blink,
+  .toast-in {
+    animation: none;
+  }
+}

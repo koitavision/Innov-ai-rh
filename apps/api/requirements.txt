@@ -1,0 +1,5 @@
+fastapi[standard-no-fastapi-cloud-cli]>=0.143.0
+mistralai>=3.6.0
+pydantic>=2.14.1
+pydantic-settings
+python-dotenv
