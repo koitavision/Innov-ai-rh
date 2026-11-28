@@ -8,7 +8,12 @@ from api.rag.corpus import Chunk, load_corpus, load_system_prompt
 from env.rh import env as rh_env
 from mistralai.client import Mistral
 
-_EMBED_BATCH = 64
+# The embeddings API rejects a request whose batch exceeds its token budget ("Too many tokens
+# overall, split into more batches", code 3210). Chunks average ~4.8k characters (~1.4k tokens),
+# so a fixed count of 64 overshoots by an order of magnitude. A character budget packs the small
+# chunks most of the corpus is made of while keeping every request under the limit: ~45k chars
+# is ~13k tokens, under the 16,384-token batch cap even with a few of the largest chunks aboard.
+_EMBED_BATCH_CHARS = 45_000
 
 
 def _cosine(a: Sequence[float], b: Sequence[float]) -> float:
@@ -39,8 +44,16 @@ class RagService:
 
     async def embed_texts(self, client: Mistral, texts: list[str]) -> list[list[float]]:
         vectors: list[list[float]] = []
-        for start in range(0, len(texts), _EMBED_BATCH):
-            batch = texts[start : start + _EMBED_BATCH]
+        batch: list[str] = []
+        used = 0
+        for text in texts:
+            if batch and used + len(text) > _EMBED_BATCH_CHARS:
+                response = await client.embeddings.create_async(model=rh_env.rh_embedding_model, inputs=batch)
+                vectors.extend([list(item.embedding) for item in response.data])
+                batch, used = [], 0
+            batch.append(text)
+            used += len(text)
+        if batch:
             response = await client.embeddings.create_async(model=rh_env.rh_embedding_model, inputs=batch)
             vectors.extend([list(item.embedding) for item in response.data])
         return vectors
@@ -92,13 +105,21 @@ class RagService:
         client: Mistral,
         messages: list[dict[str, str]],
         top_k: int,
+        extra_context: str = "",
     ) -> tuple[str, list[tuple[Chunk, float]], str]:
-        """Answer the last user message, grounded in the corpus; returns (text, citations, model)."""
+        """Answer the last user message, grounded in the corpus; returns (text, citations, model).
+
+        ``extra_context`` is appended after the corpus: a host that gathers fresh outside
+        information (web search) passes it here, and the prompt keeps it clearly apart from
+        the official texts the citations come from.
+        """
         await self.ensure_embedded(client)
         query = messages[-1]["content"]
         query_vector = (await self.embed_texts(client, [query]))[0]
         hits = self.retrieve(query_vector, top_k)
         context = self.build_context(hits, rh_env.rh_max_context_chars)
+        if extra_context:
+            context = f"{context}\n\n{extra_context}"
         system = f"{self.system_prompt}\n{context}"
         history = messages[:-1][-rh_env.rh_history_limit :]
         chat_messages = [{"role": "system", "content": system}]
@@ -112,8 +133,23 @@ class RagService:
         )
         choice = response.choices[0]
         text = choice.message.content
+        if isinstance(text, str):
+            return text, hits, rh_env.rh_model
         if isinstance(text, list):
-            text = "".join(part.get("text", "") if isinstance(part, dict) else str(part) for part in text)
+            parts: list[str] = []
+            for part in text:
+                # Reasoning models answer with typed chunks: ThinkingChunk (its `thinking` field
+                # holds a TextChunk) is dropped, TextChunk contributes its `text`.
+                if isinstance(part, str):
+                    parts.append(part)
+                elif isinstance(part, dict):
+                    value = part.get("text", "")
+                    parts.append(value if isinstance(value, str) else "")
+                else:
+                    value = getattr(part, "text", None)
+                    if isinstance(value, str):
+                        parts.append(value)
+            return "".join(parts), hits, rh_env.rh_model
         return str(text), hits, rh_env.rh_model
 
 

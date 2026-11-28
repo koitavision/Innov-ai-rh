@@ -78,3 +78,4 @@ coverage.xml
 # Generated API artifacts (rebuilt by nx gen-openapi / gen-types)
 /apps/api/openapi.json
 /apps/web/src/api/generated/
+.vercel
